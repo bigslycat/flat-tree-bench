@@ -14,15 +14,13 @@ const maxChild = 5
 
 console.log('\nMax nesting level:', maxNestingLevel)
 console.log('Max child count:', maxChild)
+console.log('Total nodes count:', maxChild * powSum(maxChild, maxNestingLevel))
 
 const buildStartTime = Date.now()
 const normalizedTree = NormalizedTree.generate(maxNestingLevel, maxChild)
 const buildTime = Date.now() - buildStartTime
 
 console.log(`\nRaw tree build time: ${buildTime}ms`)
-
-const count = Object.keys(normalizedTree).length
-console.log('Total nodes count:', count)
 
 const results: Record<keyof typeof variants, number> = {
   fpStyle: 0,
@@ -49,3 +47,7 @@ console.log(
     .map(([name, value]) => `${name}: ${value}ms`)
     .join('\n'),
 )
+
+function powSum(base: number, n: number) {
+  return (base ** (n + 1) - 1) / (base - 1)
+}
