@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  bench:
+    image: node:15.4.0-alpine3.12
+    container_name: bigslycat-flat-tree-bench
+    volumes:
+      - ./src:/app/src:ro
+
+      - ./tsconfig.json:/app/tsconfig.json:ro
+
+      - ./package.json:/app/package.json:ro
+      - ./yarn.lock:/app/yarn.lock:ro
+      - ./.yarnrc.yml:/app/.yarnrc.yml:ro
+      - ./.pnp.js:/app/.pnp.js:ro
+      - ./.yarn/cache:/app/.yarn/cache:ro
+      - ./.yarn/releases:/app/.yarn/releases:ro
+      - ./.yarn/plugins:/app/.yarn/plugins:ro
+    working_dir: /app
+    command: yarn start
+
+  pre-build-bench:
+    build:
+      context: .
+    container_name: bigslycat-flat-tree-pre-build-bench
