@@ -30,5 +30,15 @@ docker-compose up pre-build-bench # Pre-builds docker image with *.js artifacts
 ```sh
 git clone git@github.com:bigslycat/flat-tree-bench.git
 cd flat-tree-bench
-docker run --rm -it -w /app -v `pwd`:/app:ro node:alpine yarn start
+docker run --rm -it -w /app \
+  -v `pwd`/src:/app/src:ro \
+  -v `pwd`/tsconfig.json:/app/tsconfig.json:ro \
+  -v `pwd`/package.json:/app/package.json:ro \
+  -v `pwd`/yarn.lock:/app/yarn.lock:ro \
+  -v `pwd`/.yarnrc.yml:/app/.yarnrc.yml:ro \
+  -v `pwd`/.pnp.js:/app/.pnp.js:ro \
+  -v `pwd`/.yarn/cache:/app/.yarn/cache:ro \
+  -v `pwd`/.yarn/releases:/app/.yarn/releases:ro \
+  -v `pwd`/.yarn/plugins:/app/.yarn/plugins:ro \
+  node:alpine yarn start
 ```
