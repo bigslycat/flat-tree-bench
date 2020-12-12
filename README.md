@@ -4,6 +4,9 @@ Tree procession benchmark
 
 ## Usage
 
+You don't need to execute `yarn install` because this repository follows the
+[Zero-installs](https://yarnpkg.com/features/zero-installs) paradigm.
+
 ### In Node.js environment
 
 ```sh
