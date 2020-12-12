@@ -34,5 +34,10 @@
     "hooks": {
       "pre-commit": "yarn types && yarn test && yarn format --staged"
     }
+  },
+  "dependenciesMeta": {
+    "husky@4.3.5": {
+      "unplugged": true
+    }
   }
 }
